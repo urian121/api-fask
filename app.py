@@ -4,10 +4,17 @@ from confi_conn import obtener_conexion
 app = Flask(__name__)
 app.secret_key = '454ghgghfg8h9fghjnrjtr'
 
-
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
+
+@app.route('/conexion/', methods=['GET'])
+def conexion():
+    conexion = obtener_conexion()
+    if conexion:
+        return jsonify({"status": "success", "message": "Conexión exitosa a la BD"}), 200
+    else:
+        return jsonify({"status": "error", "message": "No se pudo conectar a la BD"}), 500
 
 
 @app.route('/endpoint-python', methods=['POST'])
