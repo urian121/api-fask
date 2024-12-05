@@ -18,7 +18,7 @@ def obtener_conexion():
                 database='demo_api_ricardo'
             )
         if conexionBD.is_connected():
-            # print('Conectado a la base de datos')
+            print('Conectado a la base de datos')
             return conexionBD
 
     except mysql.connector.Error as error:
